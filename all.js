@@ -177,8 +177,8 @@ full-hd: 	1920*1080
 8k: 		7680*4320
 */
 var videoConfig = {
-	// width: {min: 320, ideal: 1280},
-	// height: {min: 240, ideal: 720},
+	width: {min: 320, ideal: 1280},
+	height: {min: 240, ideal: 720},
 	width: 100,
 	height: 100,
 	aspectRatio: { exact: 1.77 },
