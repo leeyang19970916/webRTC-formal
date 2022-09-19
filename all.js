@@ -176,6 +176,13 @@ full-hd: 	1920*1080
 4k-cinema: 	4096*2160
 8k: 		7680*4320
 */
+var screenWidth = screen.width;
+var screenHeight = screen.height;
+let wwww=document.querySelector(".wwww")
+let qqqq=document.querySelector(".qqqq")
+wwww.innerHTML=screenWidth
+qqqq.innerHTML=screenHeight
+console.log(screenWidth,screenHeight)
 var videoConfig = {
 	width: {min: 320, ideal: 1280},
 	height: {min: 240, ideal: 720},
