@@ -176,15 +176,15 @@ full-hd: 	1920*1080
 4k-cinema: 	4096*2160
 8k: 		7680*4320
 */
-var screenWidth = screen.width;
-var screenHeight = screen.height;
-const pageWidth  = document.documentElement.scrollWidth;
-const pageHeight = document.documentElement.scrollHeight;
-let wwww=document.querySelector(".wwww")
-let qqqq=document.querySelector(".qqqq")
-wwww.innerHTML=pageWidth
-qqqq.innerHTML=pageHeight
-console.log(pageWidth,pageHeight)
+// var screenWidth = screen.width;
+// var screenHeight = screen.height;
+// const pageWidth  = document.documentElement.scrollWidth;
+// const pageHeight = document.documentElement.scrollHeight;
+// let wwww=document.querySelector(".wwww")
+// let qqqq=document.querySelector(".qqqq")
+// wwww.innerHTML=pageWidth
+// qqqq.innerHTML=pageHeight
+// console.log(pageWidth,pageHeight)
 var videoConfig = {
 	width: {min: 320, ideal: 1280},
 	height: {min: 240, ideal: 720},
