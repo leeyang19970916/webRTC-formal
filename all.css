@@ -20,7 +20,7 @@ header {
   font-weight: bolder;
   width: 100%;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   header {
     display: none;
   }
@@ -39,7 +39,7 @@ main {
   height: 50%;
   overflow: hidden;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   main {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -59,7 +59,7 @@ main .unConnectCamera {
           box-sizing: border-box;
   height: 100%;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   main .unConnectCamera {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -70,7 +70,7 @@ main .unConnectCamera {
     height: 50%;
   }
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   main .unConnectCamera.doctorVideo {
     height: 50%;
   }
@@ -99,7 +99,7 @@ main .camera {
   overflow: hidden;
   height: 100%;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   main .camera {
     width: 100%;
     margin: 0;
@@ -120,6 +120,8 @@ main .camera {
 main .camera .videoMaxZone {
   width: auto;
   height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 @media (max-width: 600px) {
   main .camera .videoMaxZone {
@@ -154,7 +156,7 @@ footer {
           justify-content: center;
   margin-top: 50px;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   footer {
     position: absolute;
     bottom: 0;
@@ -173,7 +175,7 @@ footer .button {
       justify-content: space-around;
   margin: 0 10px;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   footer .button {
     width: 100%;
     -webkit-box-align: end;
@@ -197,7 +199,7 @@ footer .button span {
   font-size: 32px;
   line-height: 100px;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   footer .button span {
     width: 80px;
     height: 80px;
@@ -208,7 +210,7 @@ footer .button span:hover {
   background-color: gray;
   color: white;
 }
-@media (max-width: 980px) {
+@media (max-width: 780px) {
   footer .button span.hangUpPhone {
     display: none;
   }

@@ -19,7 +19,7 @@ header {
     // left: 50%;
     // transform: translate(-50%, 75%);
 
-    @media (max-width:980px) {
+    @media (max-width:780px) {
         display: none;
     }
 }
@@ -32,7 +32,7 @@ main {
     height: 50%;
     overflow: hidden;
 
-    @media (max-width:980px) {
+    @media (max-width:780px) {
         flex-direction: column-reverse;
         height: 100vh;
     }
@@ -47,7 +47,7 @@ main {
         box-sizing: border-box;
         height: 100%;
 
-        @media (max-width:980px) {
+        @media (max-width:780px) {
             flex-direction: column-reverse;
             // height: 100vh;
             margin: 0;
@@ -56,7 +56,7 @@ main {
         }
         &.doctorVideo{
             // height: 60%;
-            @media (max-width:980px) {
+            @media (max-width:780px) {
                 height: 50%;
             }
         }
@@ -70,7 +70,7 @@ main {
             align-items: center;
             font-size: xx-large;
 
-            // @media (max-width:980px) {
+            // @media (max-width:780px) {
             //     height: 50%;
             // }
         }
@@ -86,7 +86,7 @@ main {
         overflow: hidden;
         height: 100%;
 
-        @media (max-width:980px) {
+        @media (max-width:780px) {
             width: 100%;
             margin: 0;
             height: 50%;
@@ -103,6 +103,8 @@ main {
         .videoMaxZone {
             width: auto;
             height: 100%;
+            box-sizing: border-box;
+            // color: black;
             // width: 100%;
             // min-height: 50%;
 
@@ -136,7 +138,7 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    @media (max-width:980px) {
+    @media (max-width:780px) {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -150,7 +152,7 @@ footer {
         justify-content: space-around;
         margin: 0 10px;
 
-        @media (max-width:980px) {
+        @media (max-width:780px) {
             width: 100%;
             align-items: flex-end;
             justify-content: space-between;
@@ -170,7 +172,7 @@ footer {
             font-size: 32px;
             line-height: 100px;
 
-            @media (max-width:980px) {
+            @media (max-width:780px) {
                 width: 80px;
                 height: 80px;
                 line-height: 75px;
@@ -183,7 +185,7 @@ footer {
             }
 
             &.hangUpPhone {
-                @media (max-width:980px) {
+                @media (max-width:780px) {
                     display: none;
                 }
             }
