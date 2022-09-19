@@ -101,9 +101,10 @@ main {
         }
 
         .videoMaxZone {
-            // height: 100%;
-            width: 100%;
-            min-height: 50%;
+            width: auto;
+            height: 100%;
+            // width: 100%;
+            // min-height: 50%;
 
             @media (max-width:600px) {
                 width: auto;

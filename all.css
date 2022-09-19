@@ -118,8 +118,8 @@ main .camera {
   }
 }
 main .camera .videoMaxZone {
-  width: 100%;
-  min-height: 50%;
+  width: auto;
+  height: 100%;
 }
 @media (max-width: 600px) {
   main .camera .videoMaxZone {
