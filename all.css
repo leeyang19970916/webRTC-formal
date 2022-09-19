@@ -45,7 +45,7 @@ main {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
-    height: 100vh;
+    height: 100%;
   }
 }
 main .unConnectCamera {
