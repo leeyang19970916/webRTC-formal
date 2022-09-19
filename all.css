@@ -166,8 +166,8 @@ footer {
     position: absolute;
     bottom: 0;
     left: 50%;
-    -webkit-transform: translate(-50%, -3%);
-            transform: translate(-50%, -3%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
   }
 }
 footer .button {
@@ -209,6 +209,7 @@ footer .button span {
     width: 70px;
     height: 70px;
     line-height: 70px;
+    font-size: 28px;
   }
 }
 footer .button span:hover {
