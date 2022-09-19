@@ -31,11 +31,15 @@ main {
     align-items: center;
     height: 50%;
     overflow: hidden;
-
+    @media (max-width:850px) {
+        margin-top: 5px;
+        height: 55%;
+    }
     @media (max-width:600px) {
         flex-direction: column-reverse;
         height: 100%;
     }
+
 
     .unConnectCamera {
         display: block;
@@ -85,13 +89,15 @@ main {
         margin: 0px 30px 0 30px;
         overflow: hidden;
         height: 100%;
-
-        @media (max-width:600px) {
-            width: 100%;
+        @media (max-width:850px) {
             margin: 0;
-            height: 50%;
-            box-sizing: border-box
         }
+        // @media (max-width:600px) {
+        //     width: 100%;
+        //     margin: 0;
+        //     height: 50%;
+        //     box-sizing: border-box
+        // }
 
         @media (max-width:600px) {
             width: auto;
@@ -138,7 +144,7 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    @media (max-width:800px) {
+    @media (max-width:850px) {
         margin-top: 10px;
         // position: absolute;
         // bottom: 0;
@@ -179,7 +185,7 @@ footer {
             font-size: 32px;
             line-height: 100px;
 
-            @media (max-width:800px) {
+            @media (max-width:850px) {
                 width: 70px;
                 height: 70px;
                 line-height: 70px;

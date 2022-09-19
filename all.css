@@ -39,6 +39,12 @@ main {
   height: 50%;
   overflow: hidden;
 }
+@media (max-width: 850px) {
+  main {
+    margin-top: 5px;
+    height: 55%;
+  }
+}
 @media (max-width: 600px) {
   main {
     -webkit-box-orient: vertical;
@@ -99,13 +105,9 @@ main .camera {
   overflow: hidden;
   height: 100%;
 }
-@media (max-width: 600px) {
+@media (max-width: 850px) {
   main .camera {
-    width: 100%;
     margin: 0;
-    height: 50%;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
   }
 }
 @media (max-width: 600px) {
@@ -156,7 +158,7 @@ footer {
           justify-content: center;
   margin-top: 50px;
 }
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   footer {
     margin-top: 10px;
   }
@@ -204,7 +206,7 @@ footer .button span {
   font-size: 32px;
   line-height: 100px;
 }
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   footer .button span {
     width: 70px;
     height: 70px;
