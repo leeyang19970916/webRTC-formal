@@ -186,12 +186,12 @@ full-hd: 	1920*1080
 // qqqq.innerHTML=pageHeight
 // console.log(pageWidth,pageHeight)
 var videoConfig = {
-	width: {min: 320, ideal: 1280},
-	height: {min: 240, ideal: 720},
+	// width: { min: 320, ideal: 1280 },
+	// height: { min: 240, ideal: 720 },
 	width: 100,
 	height: 100,
 	aspectRatio: { exact: 1.77 },
-	facingMode: "user" 
+	facingMode: "user"
 	// facingMode: "user"
 	// facingMode: {
 	// 	exact: "user"
@@ -212,18 +212,51 @@ var audioConfig = {
 let localStream = null
 let remoteStream = null
 
-let  cameraVideo=false
-function reverseCamera(params) {
-	console.log("reverse",videoConfig,"更正之前")
+let cameraVideo = false
+async function reverseCamera() {
+	let constraints=""
+	localStream.getTracks().forEach((track) => {
+		track.stop();
+	});
 	if (!cameraVideo) {
-		videoConfig.facingMode={ exact: "environment" }
-		cameraVideo=true
-	}else{
-		videoConfig.facingMode="user"
-		cameraVideo=false
+		console.log("前盡頭")
+		constraints = {
+			video: {
+				width: 100,
+				height: 100,
+				aspectRatio: { exact: 1.77 },
+				facingMode: "environment"
+			},
+			audio: audioConfig
+		};
+		cameraVideo = true
+	} else {
+		console.log("後面盡頭")
+		constraints = {
+			video: {
+				width: 100,
+				height: 100,
+				aspectRatio: { exact: 1.77 },
+				facingMode: "user"
+			},
+			audio: audioConfig
+		};
+		cameraVideo = false
 	}
-	openLocalCamera()
-	console.log("reverse",videoConfig,"更正完")
+	const stream = await navigator.mediaDevices.getUserMedia(constraints);
+	// const stream = await navigator.mediaDevices.getUserMedia({ video: videoConfig, audio: audioConfig })
+	localVideo.srcObject = stream
+	localStream = stream
+	// console.log("reverse", videoConfig, "更正之前")
+	// if (!cameraVideo) {
+	// 	videoConfig.facingMode = { exact: "environment" }
+	// 	cameraVideo = true
+	// } else {
+	// 	videoConfig.facingMode = "user"
+	// 	cameraVideo = false
+	// }
+	// // openLocalCamera()
+	// console.log("reverse", videoConfig, "更正完")
 }
 // socket receiver
 async function onCreate(fromId) {
