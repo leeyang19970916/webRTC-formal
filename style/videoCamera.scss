@@ -30,8 +30,8 @@ header {
     font-weight: bolder;
     width: 100%;
 
-    @media (max-width:800px) {
-        // 小於600就換版
+    @media (max-width:1000px) {
+        // 小於1000就換版
         display: none;
     }
 }
@@ -49,7 +49,13 @@ main {
     //     margin-top: 5px;
     //     height: 55%;
     // }
-    @media (max-width:800px) {
+    @media (min-width: 451px) and (max-width: 1000px)  {
+        // 450~1000
+        flex-direction:row;
+        height: 100%;
+        margin: 0;
+    }
+    @media (max-width:450px) {
         flex-direction: column-reverse;
         height: 100%;
         margin: 0;
@@ -65,8 +71,12 @@ main {
         border-radius: 5px;
         box-sizing: border-box;
         height: 100%;
-
-        @media (max-width:800px) {
+        @media (min-width: 451px) and (max-width: 1000px)  {
+            // 450~1000
+            height: 100%;
+            margin: 0 10px;
+        }
+        @media (max-width:450px) {
             flex-direction: column-reverse;
             // height: 100vh;
             margin: 0;
@@ -75,13 +85,13 @@ main {
             border: none;
         }
 
-        &.doctorVideo {
+        // &.doctorVideo {
 
-            // height: 60%;
-            @media (max-width:800px) {
-                height: 50%;
-            }
-        }
+        //     // height: 60%;
+        //     @media (max-width:800px) {
+        //         height: 50%;
+        //     }
+        // }
 
         .doctorVideoContent {
             height: 100%;
@@ -118,11 +128,24 @@ main {
         //     box-sizing: border-box
         // }
 
-        @media (max-width:800px) {
-            width: auto;
+        // @media (max-width:800px) {
+        //     width: auto;
+        //     margin: 0;
+        //     height: 50%;
+        //     box-sizing: border-box
+        // }
+        @media (min-width: 451px) and (max-width: 1000px)  {
+            // 450~1000
+            height: 100%;
+            margin: 0 10px;
+        }
+        @media (max-width:450px) {
+            flex-direction: column-reverse;
+            // height: 100vh;
             margin: 0;
+            width: 100%;
             height: 50%;
-            box-sizing: border-box
+            border: none;
         }
 
         .videoMaxZone {
