@@ -2,13 +2,15 @@ body {
     // height: 100%;
     margin: 0;
     // For Edge
-    height: 100%;
-    // WebKit-based browsers will ignore this
-    height: -moz-available;
-    // Mozilla-based browsers will ignore this.
-    height: -webkit-fill-available;
-    // For WebKit-based browsers, Edge not support this
-    height: fill-available;
+    // height: 100%;
+    // // WebKit-based browsers will ignore this
+    // height: -moz-available;
+    // // Mozilla-based browsers will ignore this.
+    // height: -webkit-fill-available;
+    // // For WebKit-based browsers, Edge not support this
+    // height: fill-available;
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 header {
