@@ -1,12 +1,12 @@
-html {
-  height: -webkit-fill-available;
-}
-
 body {
   margin: 0;
+}
+
+.container-fluid-fix {
   height: 100vh;
-  /* Fallback for browsers that do not support Custom Properties */
-  height: -webkit-fill-available;
+  /* Use vh as a fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+  margin: 0 auto;
 }
 
 header {

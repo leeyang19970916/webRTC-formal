@@ -1,6 +1,4 @@
-html{
-    height:-webkit-fill-available;
-}
+
 body {
     // height: 100%;
     margin: 0;
@@ -12,10 +10,14 @@ body {
     // height: -webkit-fill-available;
     // // For WebKit-based browsers, Edge not support this
     // height: fill-available;
-    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    height:-webkit-fill-available;
+    // height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    // height:-webkit-fill-available;
 }
-
+.container-fluid-fix{
+    height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+    margin: 0 auto;
+}
 header {
     height: 10%;
     display: flex;
