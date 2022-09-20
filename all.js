@@ -186,23 +186,11 @@ full-hd: 	1920*1080
 // qqqq.innerHTML=pageHeight
 // console.log(pageWidth,pageHeight)
 var videoConfig = {
-	// width: { min: 320, ideal: 1280 },
-	// height: { min: 240, ideal: 720 },
 	width: 100,
 	height: 100,
 	aspectRatio: { exact: 1.77 },
 	facingMode: "user"
-	// facingMode: "user"
-	// facingMode: {
-	// 	exact: "user"
-	// }
 }
-// let changeVideo = {
-// 	width: 100,
-// 	height: 100,
-// 	facingMode: { exact: "environment" }
-// }
-
 var audioConfig = {
 	volume: 1.0,
 	echoCancellation: true,
@@ -212,14 +200,13 @@ var audioConfig = {
 let localStream = null
 let remoteStream = null
 
-let cameraVideo = false
+let cameraVideo = "user"
 async function reverseCamera() {
 	let constraints=""
 	localStream.getTracks().forEach((track) => {
 		track.stop();
 	});
-	if (!cameraVideo) {
-		console.log("前盡頭")
+	if (cameraVideo=="user") {
 		constraints = {
 			video: {
 				width: 100,
@@ -229,9 +216,8 @@ async function reverseCamera() {
 			},
 			audio: audioConfig
 		};
-		cameraVideo = true
+		cameraVideo = "environment"
 	} else {
-		console.log("後面盡頭")
 		constraints = {
 			video: {
 				width: 100,
@@ -241,22 +227,11 @@ async function reverseCamera() {
 			},
 			audio: audioConfig
 		};
-		cameraVideo = false
+		cameraVideo = "user"
 	}
 	const stream = await navigator.mediaDevices.getUserMedia(constraints);
-	// const stream = await navigator.mediaDevices.getUserMedia({ video: videoConfig, audio: audioConfig })
 	localVideo.srcObject = stream
 	localStream = stream
-	// console.log("reverse", videoConfig, "更正之前")
-	// if (!cameraVideo) {
-	// 	videoConfig.facingMode = { exact: "environment" }
-	// 	cameraVideo = true
-	// } else {
-	// 	videoConfig.facingMode = "user"
-	// 	cameraVideo = false
-	// }
-	// // openLocalCamera()
-	// console.log("reverse", videoConfig, "更正完")
 }
 // socket receiver
 async function onCreate(fromId) {
@@ -521,4 +496,16 @@ function loudspeaker(params) {
 		loudSpeakClass.classList.remove("iconOpen");
 	}
 	console.log(loudSpeakClass, "loudSpeakClass")
+}
+
+let isMuted=false
+function micMuted(params) {
+	if (!isMuted) {
+		localStream.getAudioTracks()[0].enabled = true 
+		isMuted=true
+	}else{
+		localStream.getAudioTracks()[0].enabled = false 
+		isMuted=false
+	}
+	
 }

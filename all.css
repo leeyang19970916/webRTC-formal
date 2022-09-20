@@ -39,7 +39,7 @@ main {
   height: 50%;
   overflow: hidden;
 }
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   main {
     margin-top: 5px;
     height: 55%;
@@ -52,6 +52,7 @@ main {
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
     height: 100%;
+    margin: 0;
   }
 }
 main .unConnectCamera {
@@ -105,9 +106,9 @@ main .camera {
   overflow: hidden;
   height: 100%;
 }
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   main .camera {
-    margin: 0;
+    margin: 0 20px;
   }
 }
 @media (max-width: 600px) {
@@ -139,6 +140,12 @@ main .camera .videoMaxZone video {
   width: 100%;
   border-radius: 10px;
 }
+@media (max-width: 1000px) {
+  main .camera .videoMaxZone video {
+    height: 100%;
+    width: auto;
+  }
+}
 @media (max-width: 600px) {
   main .camera .videoMaxZone video {
     width: auto;
@@ -158,12 +165,12 @@ footer {
           justify-content: center;
   margin-top: 50px;
 }
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   footer {
     margin-top: 10px;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 600px) {
   footer {
     position: absolute;
     bottom: 0;
@@ -206,7 +213,7 @@ footer .button span {
   font-size: 32px;
   line-height: 100px;
 }
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   footer .button span {
     width: 70px;
     height: 70px;
