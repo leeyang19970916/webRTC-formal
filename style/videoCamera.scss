@@ -1,7 +1,14 @@
 body {
     // height: 100%;
     margin: 0;
-    height: 100vh;
+    // For Edge
+    height: 100%;
+    // WebKit-based browsers will ignore this
+    height: -moz-available;
+    // Mozilla-based browsers will ignore this.
+    height: -webkit-fill-available;
+    // For WebKit-based browsers, Edge not support this
+    height: fill-available;
 }
 
 header {
@@ -14,7 +21,9 @@ header {
     color: sienna;
     font-weight: bolder;
     width: 100%;
-    @media (max-width:600px) {
+
+    @media (max-width:800px) {
+        // 小於600就換版
         display: none;
     }
 }
@@ -26,12 +35,13 @@ main {
     align-items: center;
     height: 50%;
     overflow: hidden;
-    @media (max-width:1000px) {
-        // padding:  0 20px;
-        margin-top: 5px;
-        height: 55%;
-    }
-    @media (max-width:600px) {
+
+    // @media (max-width:1000px) {
+    //     // padding:  0 20px;
+    //     margin-top: 5px;
+    //     height: 55%;
+    // }
+    @media (max-width:800px) {
         flex-direction: column-reverse;
         height: 100%;
         margin: 0;
@@ -48,7 +58,7 @@ main {
         box-sizing: border-box;
         height: 100%;
 
-        @media (max-width:600px) {
+        @media (max-width:800px) {
             flex-direction: column-reverse;
             // height: 100vh;
             margin: 0;
@@ -56,12 +66,15 @@ main {
             height: 50%;
             border: none;
         }
-        &.doctorVideo{
+
+        &.doctorVideo {
+
             // height: 60%;
-            @media (max-width:600px) {
+            @media (max-width:800px) {
                 height: 50%;
             }
         }
+
         .doctorVideoContent {
             height: 100%;
             background-color: rgb(207, 136, 104);
@@ -87,9 +100,9 @@ main {
         margin: 0px 30px 0 30px;
         overflow: hidden;
         height: 100%;
-        @media (max-width:1000px) {
-            margin: 0 20px;
-        }
+        // @media (max-width:1000px) {
+        //     margin: 0 20px;
+        // }
         // @media (max-width:600px) {
         //     width: 100%;
         //     margin: 0;
@@ -97,7 +110,7 @@ main {
         //     box-sizing: border-box
         // }
 
-        @media (max-width:600px) {
+        @media (max-width:800px) {
             width: auto;
             margin: 0;
             height: 50%;
@@ -112,7 +125,7 @@ main {
             // width: 100%;
             // min-height: 50%;
 
-            @media (max-width:600px) {
+            @media (max-width:800px) {
                 width: auto;
                 margin: 0;
                 height: 100%;
@@ -124,12 +137,12 @@ main {
                 height: 100%;
                 width: 100%;
                 border-radius: 10px;
-                @media (max-width:1000px) {
-                    height: 100%;
-                    width: auto;
+                // @media (max-width:1000px) {
+                //     height: 100%;
+                //     width: auto;
 
-                }
-                @media (max-width:600px) {
+                // }
+                @media (max-width:800px) {
                     width: auto;
                     height: 100%;
                     border-radius: 0;
@@ -146,14 +159,15 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    @media (max-width:1000px) {
-        margin-top: 10px;
-        // position: absolute;
-        // bottom: 0;
-        // left: 50%;
-        // transform: translate(-50%, -3%);
-    }
-    @media (max-width:600px) {
+
+    // @media (max-width:1000px) {
+    //     margin-top: 10px;
+    //     // position: absolute;
+    //     // bottom: 0;
+    //     // left: 50%;
+    //     // transform: translate(-50%, -3%);
+    // }
+    @media (max-width:800px) {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -167,7 +181,7 @@ footer {
         justify-content: space-around;
         margin: 0 10px;
 
-        @media (max-width:600px) {
+        @media (max-width:800px) {
             width: 100%;
             align-items: flex-end;
             justify-content: space-between;
@@ -187,7 +201,7 @@ footer {
             font-size: 32px;
             line-height: 100px;
 
-            @media (max-width:1000px) {
+            @media (max-width:800px) {
                 width: 70px;
                 height: 70px;
                 line-height: 70px;
@@ -201,15 +215,17 @@ footer {
             }
 
             &.hangUpPhone {
-                @media (max-width:600px) {
+                @media (max-width:800px) {
                     display: none;
                 }
             }
-            &.loudSpeakClass{
-                &.iconOpen{
+
+            &.loudSpeakClass {
+                &.iconOpen {
                     color: #45b6c7;
 
                 }
+
                 // &:hover {
                 //     background-color: whitesmoke;
                 //     color: #45b6c7;

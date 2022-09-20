@@ -1,6 +1,9 @@
 body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  height: fill-available;
 }
 
 header {
@@ -20,7 +23,7 @@ header {
   font-weight: bolder;
   width: 100%;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   header {
     display: none;
   }
@@ -39,13 +42,7 @@ main {
   height: 50%;
   overflow: hidden;
 }
-@media (max-width: 1000px) {
-  main {
-    margin-top: 5px;
-    height: 55%;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   main {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -66,7 +63,7 @@ main .unConnectCamera {
           box-sizing: border-box;
   height: 100%;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   main .unConnectCamera {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -78,7 +75,7 @@ main .unConnectCamera {
     border: none;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   main .unConnectCamera.doctorVideo {
     height: 50%;
   }
@@ -107,12 +104,7 @@ main .camera {
   overflow: hidden;
   height: 100%;
 }
-@media (max-width: 1000px) {
-  main .camera {
-    margin: 0 20px;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   main .camera {
     width: auto;
     margin: 0;
@@ -127,7 +119,7 @@ main .camera .videoMaxZone {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   main .camera .videoMaxZone {
     width: auto;
     margin: 0;
@@ -141,13 +133,7 @@ main .camera .videoMaxZone video {
   width: 100%;
   border-radius: 10px;
 }
-@media (max-width: 1000px) {
-  main .camera .videoMaxZone video {
-    height: 100%;
-    width: auto;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   main .camera .videoMaxZone video {
     width: auto;
     height: 100%;
@@ -166,12 +152,7 @@ footer {
           justify-content: center;
   margin-top: 50px;
 }
-@media (max-width: 1000px) {
-  footer {
-    margin-top: 10px;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   footer {
     position: absolute;
     bottom: 0;
@@ -190,7 +171,7 @@ footer .button {
       justify-content: space-around;
   margin: 0 10px;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   footer .button {
     width: 100%;
     -webkit-box-align: end;
@@ -214,7 +195,7 @@ footer .button span {
   font-size: 32px;
   line-height: 100px;
 }
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   footer .button span {
     width: 70px;
     height: 70px;
@@ -226,7 +207,7 @@ footer .button span:hover {
   background-color: gray;
   color: white;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   footer .button span.hangUpPhone {
     display: none;
   }
