@@ -498,14 +498,14 @@ function loudspeaker(params) {
 	console.log(loudSpeakClass, "loudSpeakClass")
 }
 
-let isMuted=false
+let isMuted="unMuted"
 function micMuted(params) {
-	if (!isMuted) {
-		localStream.getAudioTracks()[0].enabled = true 
-		isMuted=true
-	}else{
+	if (isMuted="unMuted") {
 		localStream.getAudioTracks()[0].enabled = false 
-		isMuted=false
+		isMuted="muted"
+	}else{
+		localStream.getAudioTracks()[0].enabled = true 
+		isMuted="unMuted"
 	}
 	
 }
