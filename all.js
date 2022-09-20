@@ -472,7 +472,7 @@ async function completeRemoteDescription(des) {
 	}
 }
 function videoViewChangeFinal() {
-	$('.camera').show()
+	$('.ConnectCamera').show()
 	$('.unConnectCamera').hide()
 
 }
