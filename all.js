@@ -246,6 +246,7 @@ async function reverseCamera() {
 	const stream = await navigator.mediaDevices.getUserMedia(constraints);
 	localVideo.srcObject = stream
 	localStream = stream
+	createPeerConnection()
 }
 // socket receiver
 async function onCreate(fromId) {
