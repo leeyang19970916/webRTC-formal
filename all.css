@@ -45,6 +45,7 @@ main {
           align-items: center;
   height: 50%;
   overflow: hidden;
+  width: 100%;
 }
 @media (max-width: 450px) {
   main {
@@ -68,15 +69,26 @@ main {
 }
 main .camera {
   width: 50%;
+  height: 100%;
+}
+@media (min-width: 451px) and (max-width: 1000px) {
+  main .camera {
+    width: 100%;
+    height: 100%;
+  }
 }
 @media (max-width: 450px) {
   main .camera {
     width: 100%;
-    height: 50%;
+    height: auto;
   }
 }
 main .camera.ConnectCamera {
   display: none;
+}
+main .camera.ConnectCamera video {
+  width: 100%;
+  height: 100%;
 }
 main .camera.unConnectCamera {
   height: 90%;
@@ -107,20 +119,6 @@ main .camera.unConnectCamera .doctorVideoContent {
       -ms-flex-align: center;
           align-items: center;
   color: white;
-}
-main .camera .videoMaxZone {
-  padding: 0 10px;
-}
-@media (max-width: 450px) {
-  main .camera .videoMaxZone {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
-}
-main .camera .videoMaxZone video {
-  width: 100%;
-  height: 100%;
 }
 
 footer {
