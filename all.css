@@ -120,18 +120,7 @@ main .camera .videoMaxZone {
 }
 main .camera .videoMaxZone video {
   width: 100%;
-}
-@media (min-width: 451px) and (max-width: 1000px) {
-  main .camera .videoMaxZone video {
-    width: 100%;
-    height: 100%;
-  }
-}
-@media (max-width: 450px) {
-  main .camera .videoMaxZone video {
-    width: auto;
-    height: 100%;
-  }
+  height: 100%;
 }
 
 footer {
