@@ -216,44 +216,44 @@ async function localvideoLoading(params) {
 localvideoLoading()
 let cameraVideo = "user"
 async function reverseCamera() {
-	let constraints = ""
-	localStream.getTracks().forEach((track) => {
-		track.stop();
-	});
-	if (cameraVideo == "user") {
-		constraints = {
-			video: {
-				width: 100,
-				height: 100,
-				aspectRatio: { exact: 1.77 },
-				facingMode: "environment"
-			},
-			audio: audioConfig
-		};
-		cameraVideo = "environment"
-	} else {
-		constraints = {
-			video: {
-				width: 100,
-				height: 100,
-				aspectRatio: { exact: 1.77 },
-				facingMode: "user"
-			},
-			audio: audioConfig
-		};
-		cameraVideo = "user"
-	}
-	const stream = await navigator.mediaDevices.getUserMedia(constraints);
-	localVideo.srcObject = stream
-	localStream = stream
-	// let pc = new RTCPeerConnection(servers)
-	// socket.pc = pc
-
-	// pc.ontrack = event => {
-	// 	remoteStream.addTrack(event.track, remoteStream)
+	// let constraints = ""
+	// localStream.getTracks().forEach((track) => {
+	// 	track.stop();
+	// });
+	// if (cameraVideo == "user") {
+	// 	constraints = {
+	// 		video: {
+	// 			width: 100,
+	// 			height: 100,
+	// 			aspectRatio: { exact: 1.77 },
+	// 			facingMode: "environment"
+	// 		},
+	// 		audio: audioConfig
+	// 	};
+	// 	cameraVideo = "environment"
+	// } else {
+	// 	constraints = {
+	// 		video: {
+	// 			width: 100,
+	// 			height: 100,
+	// 			aspectRatio: { exact: 1.77 },
+	// 			facingMode: "user"
+	// 		},
+	// 		audio: audioConfig
+	// 	};
+	// 	cameraVideo = "user"
 	// }
-	joinWebRTCRoomData()
+	// const stream = await navigator.mediaDevices.getUserMedia(constraints);
+	// localVideo.srcObject = stream
+	// localStream = stream
 
+
+
+
+
+
+
+	
 }
 // socket receiver
 async function onCreate(fromId) {
@@ -489,7 +489,10 @@ async function completeRemoteDescription(des) {
 	}
 }
 function videoViewChangeFinal() {
-	document.querySelector(".ConnectCamera").style.display = "flex";
+	document.querySelector(".patientCamera").style.display = "flex";
+
+	document.querySelector(".doctorCamera").style.display = "flex";
+	
 	// $('.ConnectCamera').show()
 	$('.unConnectCamera').hide()
 	// icon
