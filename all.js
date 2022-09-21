@@ -3,8 +3,10 @@ function reportWindowSize() {
 	let vh = window.innerHeight * 0.01;
 	// Then we set the value in the --vh custom property to the root of the document
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-  window.onresize = reportWindowSize;
+	// console.log(vh, "reportWindowSize")
+}
+window.onresize = reportWindowSize;
+
 async function screenshot() {
 	let canvasWidth = 480
 	// *2是因為2張 remote與local
@@ -205,14 +207,20 @@ var audioConfig = {
 
 let localStream = null
 let remoteStream = null
-
+async function localvideoLoading(params) {
+	const stream = await navigator.mediaDevices.getUserMedia({ video: videoConfig, audio: audioConfig })
+	localVideo.srcObject = stream
+	localStream = stream
+	localVideoViewChange()
+}
+localvideoLoading()
 let cameraVideo = "user"
 async function reverseCamera() {
-	let constraints=""
+	let constraints = ""
 	localStream.getTracks().forEach((track) => {
 		track.stop();
 	});
-	if (cameraVideo=="user") {
+	if (cameraVideo == "user") {
 		constraints = {
 			video: {
 				width: 100,
@@ -477,7 +485,7 @@ function videoViewChangeFinal() {
 	$('.unConnectCamera').hide()
 	// icon
 	$('.hangUpPhone').show()
-	
+
 
 }
 function audio(isEnabled) {
@@ -508,20 +516,20 @@ function loudspeaker(params) {
 	console.log(loudSpeakClass, "loudSpeakClass")
 }
 
-let isMuted="unMuted"
+let isMuted = "unMuted"
 function micMuted(params) {
-	if (isMuted="unMuted") {
-		localStream.getAudioTracks()[0].enabled = false 
-		isMuted="muted"
-	}else{
-		localStream.getAudioTracks()[0].enabled = true 
-		isMuted="unMuted"
+	if (isMuted = "unMuted") {
+		localStream.getAudioTracks()[0].enabled = false
+		isMuted = "muted"
+	} else {
+		localStream.getAudioTracks()[0].enabled = true
+		isMuted = "unMuted"
 	}
-	
+
 }
 function videoIsEnd() {
 	$('.container-fluid-fix').hide()
 	$('.calling-finished').show()
-	
-	
+
+
 }
