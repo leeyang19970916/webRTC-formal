@@ -82,6 +82,12 @@ main .camera {
     width: 100%;
     height: 50%;
     max-height: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 main .camera.ConnectCamera {
@@ -129,6 +135,7 @@ main .camera.unConnectCamera .doctorVideoContent {
       -ms-flex-align: center;
           align-items: center;
   color: white;
+  width: 100%;
 }
 
 footer {
@@ -153,7 +160,7 @@ footer {
 @media (max-width: 450px) {
   footer {
     position: absolute;
-    bottom: 0;
+    bottom: 2%;
     left: 50%;
     -webkit-transform: translate(-50%, 0%);
             transform: translate(-50%, 0%);
@@ -169,7 +176,7 @@ footer .button {
       justify-content: space-around;
   margin: 0 10px;
 }
-@media (max-width: 800px) {
+@media (min-width: 451px) and (max-width: 1000px) {
   footer .button {
     width: 100%;
     -webkit-box-align: end;
@@ -179,6 +186,14 @@ footer .button {
         -ms-flex-pack: justify;
             justify-content: space-between;
     padding: 0;
+  }
+}
+@media (max-width: 450px) {
+  footer .button {
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 footer .button span {
@@ -213,11 +228,14 @@ footer .button span:hover {
   background-color: gray;
   color: white;
 }
-@media (max-width: 800px) {
-  footer .button span.hangUpPhone {
-    display: none;
-  }
-}
 footer .button span.loudSpeakClass.iconOpen {
   color: #45b6c7;
+}
+
+.calling-finished {
+  display: none;
+  text-align: center;
+  margin: 200px 0;
+  letter-spacing: 1px;
+  font-weight: bolder;
 }

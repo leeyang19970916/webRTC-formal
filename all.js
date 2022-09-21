@@ -397,6 +397,7 @@ async function hangup() {
 	await closePeerConnection()
 	await leaveRoom()
 	showController(false)
+	videoIsEnd()
 }
 
 async function answerOffer() {
@@ -474,6 +475,9 @@ async function completeRemoteDescription(des) {
 function videoViewChangeFinal() {
 	$('.ConnectCamera').show()
 	$('.unConnectCamera').hide()
+	// icon
+	$('.hangUpPhone').show()
+	
 
 }
 function audio(isEnabled) {
@@ -513,5 +517,11 @@ function micMuted(params) {
 		localStream.getAudioTracks()[0].enabled = true 
 		isMuted="unMuted"
 	}
+	
+}
+function videoIsEnd() {
+	$('.container-fluid-fix').hide()
+	$('.calling-finished').show()
+	
 	
 }
