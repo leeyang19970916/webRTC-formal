@@ -489,7 +489,8 @@ async function completeRemoteDescription(des) {
 	}
 }
 function videoViewChangeFinal() {
-	$('.ConnectCamera').show()
+	document.querySelector(".ConnectCamera").style.display = "flex";
+	// $('.ConnectCamera').show()
 	$('.unConnectCamera').hide()
 	// icon
 	$('.hangUpPhone').show()
