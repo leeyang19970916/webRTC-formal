@@ -185,10 +185,10 @@ footer {
                 font-size: 28px;
             }
 
-            &:hover {
-                background-color: gray;
-                color: white;
-            }
+            // &:hover {
+            //     background-color: gray;
+            //     color: white;
+            // }
 
             // &.hangUpPhone {
             //     @media (max-width:800px) {
@@ -196,17 +196,17 @@ footer {
             //     }
             // }
 
-            &.loudSpeakClass {
-                &.iconOpen {
-                    color: #45b6c7;
+            // &.loudSpeakClass {
+            //     &.iconOpen {
+            //         color: #45b6c7;
 
-                }
+            //     }
 
-                // &:hover {
-                //     background-color: whitesmoke;
-                //     color: #45b6c7;
-                // }
-            }
+            //     // &:hover {
+            //     //     background-color: whitesmoke;
+            //     //     color: #45b6c7;
+            //     // }
+            // }
         }
     }
 

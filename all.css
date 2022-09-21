@@ -211,13 +211,6 @@ footer .button span {
     font-size: 28px;
   }
 }
-footer .button span:hover {
-  background-color: gray;
-  color: white;
-}
-footer .button span.loudSpeakClass.iconOpen {
-  color: #45b6c7;
-}
 
 .calling-finished {
   display: none;
