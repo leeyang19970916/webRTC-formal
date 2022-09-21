@@ -530,14 +530,18 @@ function loudspeaker(params) {
 
 let isMuted = "unMuted"
 function micMuted(params) {
-	if (isMuted = "unMuted") {
+
+	let muted = document.querySelector(".mutedClass .muted")
+	
+	if (isMuted == "unMuted") {
 		localStream.getAudioTracks()[0].enabled = false
 		isMuted = "muted"
+		muted.classList.toggle("text-danger")
 	} else {
 		localStream.getAudioTracks()[0].enabled = true
 		isMuted = "unMuted"
+		muted.classList.toggle("text-danger")
 	}
-
 }
 function videoIsEnd() {
 	$('.container-fluid-fix').hide()
