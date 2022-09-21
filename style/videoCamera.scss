@@ -98,8 +98,25 @@ main {
         }
         .videoMaxZone{
             padding:  0 10px;
+            @media (max-width:450px) {
+                width:100%;
+                height: 100%;
+                padding: 0;
+                // width: 130%;3
+                // 這邊
+            }
             video{
                 width: 100%;
+                @media (min-width: 451px) and (max-width: 1000px) {
+                    width: 100%;
+                    height: 100%;
+                }
+                @media (max-width:450px) {
+                    width:auto;
+                    height: 100%;
+                    // width: 130%;3
+                    // 這邊
+                }
             }
         }
 
