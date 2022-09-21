@@ -246,12 +246,13 @@ async function reverseCamera() {
 	const stream = await navigator.mediaDevices.getUserMedia(constraints);
 	localVideo.srcObject = stream
 	localStream = stream
-	let pc = new RTCPeerConnection(servers)
-	socket.pc = pc
+	// let pc = new RTCPeerConnection(servers)
+	// socket.pc = pc
 
-	pc.ontrack = event => {
-		remoteStream.addTrack(event.track, remoteStream)
-	}
+	// pc.ontrack = event => {
+	// 	remoteStream.addTrack(event.track, remoteStream)
+	// }
+	joinWebRTCRoomData()
 
 }
 // socket receiver
