@@ -393,9 +393,9 @@ async function sendWebRTCData(action = "", extra = {}) {
 	socket.emit("JsonData", socket.withId, JSON.stringify(d))
 }
 
-async function leaveRoom() {
-	socket.emit("LeaveRoom", myRoomId)
-}
+// async function leaveRoom() {
+	
+// }
 
 async function hangup() {
 
@@ -496,6 +496,8 @@ function videoViewChangeFinal() {
 	// $('.ConnectCamera').show()
 	$('.unConnectCamera').hide()
 	// icon
+	$('.exit').hide()
+	// icon
 	$('.hangUpPhone').show()
 
 
@@ -548,4 +550,33 @@ function videoIsEnd() {
 	$('.calling-finished').show()
 
 
+}
+function leaveRoom() {
+	localStream = null
+	remoteStream = null
+	// localStream.getTracks().forEach(track => {
+	// 	track.stop()
+	// })
+	// if (localStream) {
+	// 	localStream.getTracks().forEach(track => {
+	// 		track.stop()
+	// 	})
+	// 	localStream = null
+	// }
+
+	// if (remoteStream) {
+	// 	remoteStream = null
+	// }
+	// hangup()
+	// localStream.getTracks().forEach(track => {
+	// 	track.stop()
+	// })
+	// 	localStream = null
+	socket.emit("LeaveRoom", myRoomId)
+	// closePeerConnection()
+
+	console.log("已經離開房間")
+
+	// $('.container-fluid-fix').hide()
+	// $('.calling-finished').show()
 }

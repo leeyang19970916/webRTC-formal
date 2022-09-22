@@ -69,6 +69,7 @@ main {
 }
 main .camera {
   width: 50%;
+  max-height: 90%;
 }
 @media (min-width: 451px) and (max-width: 1000px) {
   main .camera {
@@ -84,6 +85,8 @@ main .camera {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    min-height: 35%;
+    max-height: 50%;
   }
 }
 main .camera.ConnectCamera {

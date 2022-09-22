@@ -56,6 +56,7 @@ main {
     }
     .camera{
         width: 50%;
+        max-height: 90%;
         // height: 100%;
         @media (min-width: 451px) and (max-width: 1000px){
             width: 100%;
@@ -68,6 +69,8 @@ main {
             display: flex;
             justify-content: center;
             // width: 130%;3
+            min-height: 35%;
+            max-height: 50%;
             // 這邊
         }
 

@@ -58,10 +58,10 @@
       </div> -->
       <main>
         <div class="camera ConnectCamera patientCamera">
-            <video playsinline autoplay muted id="local-video"></video>
+          <video playsinline autoplay muted id="local-video"></video>
         </div>
         <div class="camera ConnectCamera doctorCamera">
-            <video playsinline autoplay id="remote-video"></video>
+          <video playsinline autoplay id="remote-video"></video>
         </div>
         <div class="camera unConnectCamera patientVideo">病人區左邊</div>
         <div class="camera unConnectCamera doctorVideo">
@@ -71,7 +71,7 @@
               <span class="pr-1">蘇貞昌</span><span class="pl-1">簡阿民</span>
             </div>
             <div class="text-center">請等待醫師連線...</div>
-            <div onclick="hangup()" class="btn btn-info mt-3">離開房間</div>
+            <!-- <div onclick="hangup()" class="btn btn-info mt-3">離開房間</div> -->
           </div>
         </div>
       </main>
@@ -83,11 +83,18 @@
           <span onclick="loudspeaker()" class="btn p-0 loudSpeakClass"
             ><i class="fas fa-phone-volume"></i
           ></span>
-          <span onclick="hangup()" class="btn p-0 text-danger hangUpPhone" style="display:none ;"
+          <span
+            onclick="hangup()"
+            class="btn p-0 text-danger hangUpPhone"
+            style="display: none"
             ><i class="fas fa-phone-slash"></i
           ></span>
+          <span onclick="leaveRoom()" class="btn p-0 text-danger exit"
+            ><i class="fas fa-times"></i>
+          </span>
           <span class="btn p-0 mutedClass" onclick="micMuted()"
-            ><i class="fas fa-microphone-alt-slash muted"></i></span>
+            ><i class="fas fa-microphone-alt-slash muted"></i
+          ></span>
         </div>
         <!-- <div class="button" style="position:absolute;bottom:0;left:50%;">
               <span  onclick="micMuted()" class="btn p-0 loudSpeakClass"><i class="fas fa-microphone-alt-slash"></i></span>
