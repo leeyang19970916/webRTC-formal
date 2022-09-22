@@ -85,7 +85,6 @@ main .camera {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    min-height: 10%;
   }
 }
 main .camera.ConnectCamera {
@@ -217,7 +216,13 @@ footer .button span {
 .calling-finished {
   display: none;
   text-align: center;
-  margin: 200px;
+  margin: 200px 0;
   letter-spacing: 1px;
   font-weight: bolder;
+}
+@media (max-width: 450px) {
+  .calling-finished {
+    margin: 50px 0;
+    letter-spacing: 0px;
+  }
 }
