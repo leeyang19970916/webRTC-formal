@@ -186,7 +186,8 @@ footer {
         margin: 0 10px;
 
         @media (min-width: 451px) and (max-width: 1000px) {
-            width: 100%;
+            width: 50%;
+            max-width: 100%;
             align-items: flex-end;
             justify-content: space-between;
             padding: 0;

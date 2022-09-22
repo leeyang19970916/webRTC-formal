@@ -195,7 +195,8 @@ footer .button {
 }
 @media (min-width: 451px) and (max-width: 1000px) {
   footer .button {
-    width: 100%;
+    width: 50%;
+    max-width: 100%;
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
