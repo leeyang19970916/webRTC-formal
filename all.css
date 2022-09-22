@@ -98,8 +98,18 @@ main .camera.ConnectCamera {
 main .camera.ConnectCamera.patientCamera {
   margin-right: 10px;
 }
+@media (max-width: 450px) {
+  main .camera.ConnectCamera.patientCamera {
+    margin: 0;
+  }
+}
 main .camera.ConnectCamera.doctorCamera {
   margin-left: 10px;
+}
+@media (max-width: 450px) {
+  main .camera.ConnectCamera.doctorCamera {
+    margin: 0;
+  }
 }
 main .camera.ConnectCamera video {
   height: 100%;
