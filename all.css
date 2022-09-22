@@ -169,8 +169,9 @@ footer {
     bottom: 0%;
     margin: 0;
     height: auto;
-    -webkit-transform: translate(0px, -3%);
-            transform: translate(0px, -3%);
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
   }
 }
 @media (max-width: 450px) {
@@ -178,8 +179,8 @@ footer {
     position: absolute;
     bottom: 0%;
     left: 50%;
-    -webkit-transform: translate(-50%, -10%);
-            transform: translate(-50%, -10%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
   }
 }
 footer .button {
