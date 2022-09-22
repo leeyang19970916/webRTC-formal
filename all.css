@@ -93,7 +93,7 @@ main .camera {
 }
 main .camera.ConnectCamera {
   display: none;
-  background-color: black;
+  background-color: #343a40;
 }
 main .camera.ConnectCamera.patientCamera {
   margin-right: 10px;
