@@ -1,12 +1,40 @@
 
-function reportWindowSize() {
-	let vh =  $(window).height() * 0.01;
-	let aaa = window.innerHeight * 0.01;
-	// Then we set the value in the --vh custom property to the root of the document
-	document.documentElement.style.setProperty('--vh', `${aaa}px`);
-	console.log(vh, "reportWindowSize",aaa)
+// function reportWindowSize() {
+// 	let vh =  $(window).height() * 0.01;
+// 	let aaa = window.innerHeight * 0.01;
+// 	// Then we set the value in the --vh custom property to the root of the document
+// 	document.documentElement.style.setProperty('--vh', `${aaa}px`);
+// 	console.log(vh, "reportWindowSize",aaa)
+// }
+// window.onresize = reportWindowSize;
+
+
+
+// var box = document.querySelector(".container-fluid-fix");  //獲取盒子的指標參照
+var box = document.querySelector(".container-fluid-fix");  //獲取盒子的指標參照
+
+window.onresize = function () {  //註冊事件處理常式，動態調整盒子大小
+	box.style.width = w() *1 + "px";
+	box.style.height = h() * 1+ "px";
 }
-window.onresize = reportWindowSize;
+function w () {  //獲取視窗寬度
+	if (window.innerWidth) {  //相容DOM
+		return $(window).width() 
+	}
+	else {
+		return document.body.clientWidth;
+	}  //相容IE
+
+}
+function h () {  //獲取視窗高度
+	if (window.innerHeight) {  //相容DOM
+		return $(window).height() ;
+	}
+	else{
+		return document.body.clientHeight;
+	}   //相容IE
+
+}
 
 async function screenshot() {
 	let canvasWidth = 480
