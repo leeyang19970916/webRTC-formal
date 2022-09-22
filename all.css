@@ -85,8 +85,7 @@ main .camera {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    min-height: 35%;
-    max-height: 50%;
+    min-height: 10%;
   }
 }
 main .camera.ConnectCamera {
