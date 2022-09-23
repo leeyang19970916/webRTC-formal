@@ -502,17 +502,18 @@ const capture = async facingMode => {
 	}
 
 	try {
+		// replace local stream
+		localStream = stream
+		localVideo.srcObject = localStream
+		
 		// replace video track when pc exist
-		if (socket.pc) {
+		if (socket.pc.iceConnectionState == "connected") {
 			let stream = await navigator.mediaDevices.getUserMedia(options)
 			let [videoTrack] = stream.getVideoTracks()
 			let sender = socket.pc.getSenders().find((s) => s.track.kind == videoTrack.kind)
 			sender.replaceTrack(videoTrack)
 		}
 
-		// replace local stream
-		localStream = stream
-		localVideo.srcObject = localStream
 	} catch (e) {
 		alert(e)
 		return
