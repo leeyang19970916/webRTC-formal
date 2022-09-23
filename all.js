@@ -472,8 +472,6 @@ function micMuted(params) {
 function videoIsEnd() {
 	$('.container-fluid-fix').hide()
 	$('.calling-finished').show()
-
-
 }
 function leaveRoom() {
 	localStream = null
@@ -504,11 +502,17 @@ const capture = async facingMode => {
 	}
 
 	try {
-		// replace video track
-		let stream = await navigator.mediaDevices.getUserMedia(options)
-		let [videoTrack] = stream.getVideoTracks()
-		let sender = socket.pc.getSenders().find((s) => s.track.kind == videoTrack.kind)
-		sender.replaceTrack(videoTrack)
+		// replace video track when pc exist
+		if (socket.pc) {
+			let stream = await navigator.mediaDevices.getUserMedia(options)
+			let [videoTrack] = stream.getVideoTracks()
+			let sender = socket.pc.getSenders().find((s) => s.track.kind == videoTrack.kind)
+			sender.replaceTrack(videoTrack)
+		}
+
+		// replace local stream
+		localStream = stream
+		localVideo.srcObject = localStream
 	} catch (e) {
 		alert(e)
 		return
