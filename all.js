@@ -60,7 +60,7 @@ function showController(isShow) {
 let localVideo = document.getElementById("local-video")
 let remoteVideo = document.getElementById("remote-video")
 
-let myRoomId = "c-d-p"
+let myRoomId = "c-d-p-dd"
 
 // 需傳GET參數role區分
 // 可選傳GET參數peer: socket.inRoom可以查看有誰在房間會展示
@@ -521,15 +521,14 @@ async function switchCamera() {
 		  localVideo.srcObject = null;
 		  localVideo.srcObject = stream
 		  localStream = stream
-		  let pc=socket.pc
-		  pc.ontrack = event => {
-			remoteStream.addTrack(event.track, remoteStream)
-		}
+		//   console.log(localStream,pc,"pc")
+		  
+		  socket.emit("red", myRoomId, JSON.stringify(stream))
 		//   sendWebRTCData("on-webrtc-create", {})
 		//   localVideo.play()
 		//   console.log(localVideo,"local")
 		//   remoteStream.removeTrack(sender);
-		  console.log(remoteStream,"remoteStream")
+		//   console.log(remoteStream,"remoteStream")
 		//   console.log(pc,socket.pc)
 		//   socket.pc = pc
 	} catch (error) {
@@ -539,7 +538,10 @@ async function switchCamera() {
 
 }
 
-
+socket.on("red",(data)=>{
+	console.log("sdsddei")
+	// console.log(data,JSON.parse(data),"e04e04e04e04")
+})
 
 
 // let loudSound = false
