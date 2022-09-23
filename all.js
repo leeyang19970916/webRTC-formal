@@ -508,7 +508,7 @@ const capture = async facingMode => {
 		localVideo.srcObject = localStream
 		
 		// replace video track when pc exist
-		if (socket.pc.iceConnectionState == "connected") {
+		if (socket.pc) {
 			let [videoTrack] = stream.getVideoTracks()
 			let sender = socket.pc.getSenders().find((s) => s.track.kind == videoTrack.kind)
 			sender.replaceTrack(videoTrack)
