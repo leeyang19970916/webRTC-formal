@@ -36,47 +36,6 @@ function h () {  //獲取視窗高度
 
 }
 
-async function screenshot() {
-	let canvasWidth = 480
-	// *2是因為2張 remote與local
-	let canvasHeight = 270 * 2
-	// calculate stream width and height
-	// canvas width is 640 and height is 720
-	let divContainer = document.getElementById('div-canvas')
-	var canvas = document.createElement('canvas')
-	canvas.id = "canvas-screenshot";
-	canvas.width = canvasWidth
-	canvas.height = canvasHeight
-	canvas.style.zIndex = 8
-	canvas.style.position = "absolute"
-
-	let context2D = canvas.getContext('2d')
-	var img = new Image()
-	// draw local stream at (0,0)
-	context2D.drawImage(localVideo, 0, 0, canvasWidth, canvasHeight / 2)
-	// draw remote stream at (0, height/2)
-	context2D.drawImage(remoteVideo, 0, canvasHeight / 2, canvasWidth, canvasHeight / 2)
-
-	img.id = "screenshot-img"
-	img.src = canvas.toDataURL("image/jpg", "0.9")
-	img.width = canvasWidth
-	img.height = canvasHeight
-
-	// only display picture to html
-	divContainer.innerHTML = ''
-	divContainer.appendChild(img)
-
-	img.onload = () => {
-		// remove canvas
-		canvas.remove()
-
-		// start to downdload
-		var a = document.createElement("a")
-		a.href = img.src
-		a.download = "test.jpg"
-		a.click()
-	}
-}
 
 $(document).ready(() => {
 	localVideo.style.opacity = 0
@@ -243,47 +202,7 @@ async function localvideoLoading(params) {
 	localVideoViewChange()
 }
 localvideoLoading()
-let cameraVideo = "user"
-async function reverseCamera() {
-	// let constraints = ""
-	// localStream.getTracks().forEach((track) => {
-	// 	track.stop();
-	// });
-	// if (cameraVideo == "user") {
-	// 	constraints = {
-	// 		video: {
-	// 			width: 100,
-	// 			height: 100,
-	// 			aspectRatio: { exact: 1.77 },
-	// 			facingMode: "environment"
-	// 		},
-	// 		audio: audioConfig
-	// 	};
-	// 	cameraVideo = "environment"
-	// } else {
-	// 	constraints = {
-	// 		video: {
-	// 			width: 100,
-	// 			height: 100,
-	// 			aspectRatio: { exact: 1.77 },
-	// 			facingMode: "user"
-	// 		},
-	// 		audio: audioConfig
-	// 	};
-	// 	cameraVideo = "user"
-	// }
-	// const stream = await navigator.mediaDevices.getUserMedia(constraints);
-	// localVideo.srcObject = stream
-	// localStream = stream
 
-
-
-
-
-
-
-	
-}
 // socket receiver
 async function onCreate(fromId) {
 	// 收到建立連線請求，但已有連線
@@ -328,7 +247,6 @@ async function startCall() {
 	// 要求對方建立PeerConnection
 	await sendWebRTCData("on-webrtc-create", {})
 }
-
 async function openLocalCamera() {
 	try {
 		// 處理local stream
@@ -421,10 +339,6 @@ async function sendWebRTCData(action = "", extra = {}) {
 
 	socket.emit("JsonData", socket.withId, JSON.stringify(d))
 }
-
-// async function leaveRoom() {
-	
-// }
 
 async function hangup() {
 
@@ -544,20 +458,6 @@ function video(isEnabled) {
 		localVideo.srcObject.getAudioTracks()[0].enabled = isEnabled
 	}
 }
-let loudSound = false
-function loudspeaker(params) {
-	let loudSpeakClass = document.querySelector(".loudSpeakClass")
-	if (!loudSound) {
-		loudSound = true
-		console.log("不擴音轉成擴音")
-		loudSpeakClass.classList.add("iconOpen")
-	} else {
-		loudSound = false
-		console.log("這是擴音")
-		loudSpeakClass.classList.remove("iconOpen");
-	}
-	console.log(loudSpeakClass, "loudSpeakClass")
-}
 
 let isMuted = "unMuted"
 function micMuted(params) {
@@ -583,29 +483,119 @@ function videoIsEnd() {
 function leaveRoom() {
 	localStream = null
 	remoteStream = null
-	// localStream.getTracks().forEach(track => {
-	// 	track.stop()
-	// })
-	// if (localStream) {
-	// 	localStream.getTracks().forEach(track => {
-	// 		track.stop()
-	// 	})
-	// 	localStream = null
-	// }
-
-	// if (remoteStream) {
-	// 	remoteStream = null
-	// }
-	// hangup()
-	// localStream.getTracks().forEach(track => {
-	// 	track.stop()
-	// })
-	// 	localStream = null
 	socket.emit("LeaveRoom", myRoomId)
-	// closePeerConnection()
 
 	console.log("已經離開房間")
 
-	// $('.container-fluid-fix').hide()
-	// $('.calling-finished').show()
+	$('.container-fluid-fix').hide()
+	$('.calling-finished').show()
 }
+let cameraVideo = "user"
+async function switchCamera() {
+	document.querySelector(".switch").classList.toggle("text-info");
+	let options={
+		video:videoConfig,
+		audio:audioConfig
+	}
+	if (cameraVideo=="user") {
+		cameraVideo="environment"
+		videoConfig.facingMode="environment"
+	}else{
+		cameraVideo = "user"
+		videoConfig.facingMode="user"
+	}
+	console.log(options,"options")
+	// var oldVideoTracks = callingSession.localStream.getVideoTracks();      
+	// var newVideoTracks = stream.getVideoTracks();
+
+	// if (oldVideoTracks.length > 0 && newVideoTracks.length > 0) {
+	// 	 callingSession.localStream.removeTrack(oldVideoTracks[0]);
+	// 	 callingSession.localStream.addTrack(newVideoTracks[0]);
+	// }  
+	try {
+		if (localStream) {
+			const tracks = localStream.getTracks();
+			tracks.forEach(track => track.stop());
+		  }
+		  stream = await navigator.mediaDevices.getUserMedia(options);
+		  localVideo.srcObject = null;
+		  localVideo.srcObject = stream
+		  localStream = stream
+		  let pc=socket.pc
+		  pc.ontrack = event => {
+			remoteStream.addTrack(event.track, remoteStream)
+		}
+		//   sendWebRTCData("on-webrtc-create", {})
+		//   localVideo.play()
+		//   console.log(localVideo,"local")
+		//   remoteStream.removeTrack(sender);
+		  console.log(remoteStream,"remoteStream")
+		//   console.log(pc,socket.pc)
+		//   socket.pc = pc
+	} catch (error) {
+		alert(error)
+		return
+	}
+
+}
+
+
+
+
+// let loudSound = false
+// // function loudspeaker(params) {
+// // 	let loudSpeakClass = document.querySelector(".loudSpeakClass")
+// // 	if (!loudSound) {
+// // 		loudSound = true
+// // 		console.log("不擴音轉成擴音")
+// // 		loudSpeakClass.classList.add("iconOpen")
+// // 	} else {
+// // 		loudSound = false
+// // 		console.log("這是擴音")
+// // 		loudSpeakClass.classList.remove("iconOpen");
+// // 	}
+// // 	console.log(loudSpeakClass, "loudSpeakClass")
+// // }
+
+
+// async function screenshot() {
+// 	let canvasWidth = 480
+// 	// *2是因為2張 remote與local
+// 	let canvasHeight = 270 * 2
+// 	// calculate stream width and height
+// 	// canvas width is 640 and height is 720
+// 	let divContainer = document.getElementById('div-canvas')
+// 	var canvas = document.createElement('canvas')
+// 	canvas.id = "canvas-screenshot";
+// 	canvas.width = canvasWidth
+// 	canvas.height = canvasHeight
+// 	canvas.style.zIndex = 8
+// 	canvas.style.position = "absolute"
+
+// 	let context2D = canvas.getContext('2d')
+// 	var img = new Image()
+// 	// draw local stream at (0,0)
+// 	context2D.drawImage(localVideo, 0, 0, canvasWidth, canvasHeight / 2)
+// 	// draw remote stream at (0, height/2)
+// 	context2D.drawImage(remoteVideo, 0, canvasHeight / 2, canvasWidth, canvasHeight / 2)
+
+// 	img.id = "screenshot-img"
+// 	img.src = canvas.toDataURL("image/jpg", "0.9")
+// 	img.width = canvasWidth
+// 	img.height = canvasHeight
+
+// 	// only display picture to html
+// 	divContainer.innerHTML = ''
+// 	divContainer.appendChild(img)
+
+// 	img.onload = () => {
+// 		// remove canvas
+// 		canvas.remove()
+
+// 		// start to downdload
+// 		var a = document.createElement("a")
+// 		a.href = img.src
+// 		a.download = "test.jpg"
+// 		a.click()
+// 	}
+// }
