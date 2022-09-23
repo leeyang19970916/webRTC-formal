@@ -60,7 +60,7 @@ function showController(isShow) {
 let localVideo = document.getElementById("local-video")
 let remoteVideo = document.getElementById("remote-video")
 
-let myRoomId = "c-d-p"
+let myRoomId = "abc"
 
 // 需傳GET參數role區分
 // 可選傳GET參數peer: socket.inRoom可以查看有誰在房間會展示
@@ -182,8 +182,6 @@ full-hd: 	1920*1080
 // qqqq.innerHTML=pageHeight
 // console.log(pageWidth,pageHeight)
 var videoConfig = {
-	width: 100,
-	height: 100,
 	aspectRatio: { exact: 1.77 },
 	facingMode: "user"
 }
@@ -195,13 +193,13 @@ var audioConfig = {
 
 let localStream = null
 let remoteStream = null
-async function localvideoLoading(params) {
-	const stream = await navigator.mediaDevices.getUserMedia({ video: videoConfig, audio: audioConfig })
-	localVideo.srcObject = stream
-	localStream = stream
-	localVideoViewChange()
-}
-localvideoLoading()
+// async function localvideoLoading(params) {
+// 	const stream = await navigator.mediaDevices.getUserMedia({ video: videoConfig, audio: audioConfig })
+// 	localVideo.srcObject = stream
+// 	localStream = stream
+// 	localVideoViewChange()
+// }
+openLocalCamera()
 
 // socket receiver
 async function onCreate(fromId) {
@@ -257,11 +255,7 @@ async function openLocalCamera() {
 			localVideoViewChange()
 		}
 		// 處理remote stream
-		if (!remoteStream) {
-			// 處理remote stream
-			remoteStream = new MediaStream()
-			remoteVideo.srcObject = remoteStream
-		}
+		remoteVideo.srcObject = new MediaStream()
 
 	} catch (e) {
 		alert(`取得視訊鏡頭與麥克風錯誤: ${e.name}`)
@@ -277,7 +271,8 @@ async function createPeerConnection() {
 	socket.pc = pc
 
 	pc.ontrack = event => {
-		remoteStream.addTrack(event.track, remoteStream)
+		remoteStream = event.streams[0]
+		remoteVideo.srcObject = remoteStream
 	}
 
 	// 監聽candidate事件
@@ -490,112 +485,32 @@ function leaveRoom() {
 	$('.container-fluid-fix').hide()
 	$('.calling-finished').show()
 }
-let cameraVideo = "user"
 async function switchCamera() {
 	document.querySelector(".switch").classList.toggle("text-info");
-	let options={
-		video:videoConfig,
-		audio:audioConfig
+	
+	if (videoConfig.facingMode == "user") {
+		capture("environment")
+	} else {
+		capture("user")
 	}
-	if (cameraVideo=="user") {
-		cameraVideo="environment"
-		videoConfig.facingMode="environment"
-	}else{
-		cameraVideo = "user"
-		videoConfig.facingMode="user"
-	}
-	console.log(options,"options")
-	// var oldVideoTracks = callingSession.localStream.getVideoTracks();      
-	// var newVideoTracks = stream.getVideoTracks();
-
-	// if (oldVideoTracks.length > 0 && newVideoTracks.length > 0) {
-	// 	 callingSession.localStream.removeTrack(oldVideoTracks[0]);
-	// 	 callingSession.localStream.addTrack(newVideoTracks[0]);
-	// }  
-	try {
-		if (localStream) {
-			const tracks = localStream.getTracks();
-			tracks.forEach(track => track.stop());
-		  }
-		  stream = await navigator.mediaDevices.getUserMedia(options);
-		  localVideo.srcObject = null;
-		  localVideo.srcObject = stream
-		  localStream = stream
-		  let pc=socket.pc
-		  pc.ontrack = event => {
-			remoteStream.addTrack(event.track, remoteStream)
-		}
-		//   sendWebRTCData("on-webrtc-create", {})
-		//   localVideo.play()
-		//   console.log(localVideo,"local")
-		//   remoteStream.removeTrack(sender);
-		  console.log(remoteStream,"remoteStream")
-		//   console.log(pc,socket.pc)
-		//   socket.pc = pc
-	} catch (error) {
-		alert(error)
-		return
-	}
-
 }
 
+const capture = async facingMode => {
+	console.log(facingMode)
+	videoConfig.facingMode = facingMode
+	const options = {
+		audio: audioConfig,
+		video: videoConfig
+	}
 
-
-
-// let loudSound = false
-// // function loudspeaker(params) {
-// // 	let loudSpeakClass = document.querySelector(".loudSpeakClass")
-// // 	if (!loudSound) {
-// // 		loudSound = true
-// // 		console.log("不擴音轉成擴音")
-// // 		loudSpeakClass.classList.add("iconOpen")
-// // 	} else {
-// // 		loudSound = false
-// // 		console.log("這是擴音")
-// // 		loudSpeakClass.classList.remove("iconOpen");
-// // 	}
-// // 	console.log(loudSpeakClass, "loudSpeakClass")
-// // }
-
-
-// async function screenshot() {
-// 	let canvasWidth = 480
-// 	// *2是因為2張 remote與local
-// 	let canvasHeight = 270 * 2
-// 	// calculate stream width and height
-// 	// canvas width is 640 and height is 720
-// 	let divContainer = document.getElementById('div-canvas')
-// 	var canvas = document.createElement('canvas')
-// 	canvas.id = "canvas-screenshot";
-// 	canvas.width = canvasWidth
-// 	canvas.height = canvasHeight
-// 	canvas.style.zIndex = 8
-// 	canvas.style.position = "absolute"
-
-// 	let context2D = canvas.getContext('2d')
-// 	var img = new Image()
-// 	// draw local stream at (0,0)
-// 	context2D.drawImage(localVideo, 0, 0, canvasWidth, canvasHeight / 2)
-// 	// draw remote stream at (0, height/2)
-// 	context2D.drawImage(remoteVideo, 0, canvasHeight / 2, canvasWidth, canvasHeight / 2)
-
-// 	img.id = "screenshot-img"
-// 	img.src = canvas.toDataURL("image/jpg", "0.9")
-// 	img.width = canvasWidth
-// 	img.height = canvasHeight
-
-// 	// only display picture to html
-// 	divContainer.innerHTML = ''
-// 	divContainer.appendChild(img)
-
-// 	img.onload = () => {
-// 		// remove canvas
-// 		canvas.remove()
-
-// 		// start to downdload
-// 		var a = document.createElement("a")
-// 		a.href = img.src
-// 		a.download = "test.jpg"
-// 		a.click()
-// 	}
-// }
+	try {
+		// replace video track
+		let stream = await navigator.mediaDevices.getUserMedia(options)
+		let [videoTrack] = stream.getVideoTracks()
+		let sender = socket.pc.getSenders().find((s) => s.track.kind == videoTrack.kind)
+		sender.replaceTrack(videoTrack)
+	} catch (e) {
+		alert(e)
+		return
+	}
+}
