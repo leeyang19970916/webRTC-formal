@@ -77,6 +77,9 @@ main .camera {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 10px;
 }
 @media (min-width: 577px) and (max-width: 1000px) {
@@ -116,9 +119,16 @@ main .camera.ConnectCamera.doctorCamera {
 main .camera.ConnectCamera video {
   height: 100%;
   width: 100%;
+  border-radius: 10px;
+}
+@media (min-width: 577px) and (max-width: 1000px) {
+  main .camera.ConnectCamera video {
+    border-radius: 0px;
+  }
 }
 @media (max-width: 576px) {
   main .camera.ConnectCamera video {
+    border-radius: 0px;
     height: 100%;
     width: auto;
   }
