@@ -14,23 +14,23 @@
 var box = document.querySelector(".container-fluid-fix");  //獲取盒子的指標參照
 
 window.onresize = function () {  //註冊事件處理常式，動態調整盒子大小
-	box.style.width = w() *1 + "px";
-	box.style.height = h() * 1+ "px";
+	box.style.width = w() * 1 + "px";
+	box.style.height = h() * 1 + "px";
 }
-function w () {  //獲取視窗寬度
+function w() {  //獲取視窗寬度
 	if (window.innerWidth) {  //相容DOM
-		return $(window).width() 
+		return $(window).width()
 	}
 	else {
 		return document.body.clientWidth;
 	}  //相容IE
 
 }
-function h () {  //獲取視窗高度
+function h() {  //獲取視窗高度
 	if (window.innerHeight) {  //相容DOM
-		return $(window).height() ;
+		return $(window).height();
 	}
-	else{
+	else {
 		return document.body.clientHeight;
 	}   //相容IE
 
@@ -335,24 +335,7 @@ async function sendWebRTCData(action = "", extra = {}) {
 	socket.emit("JsonData", socket.withId, JSON.stringify(d))
 }
 
-async function hangup() {
 
-	if (localStream) {
-		localStream.getTracks().forEach(track => {
-			track.stop()
-		})
-		localStream = null
-	}
-
-	if (remoteStream) {
-		remoteStream = null
-	}
-
-	await closePeerConnection()
-	await leaveRoom()
-	showController(false)
-	videoIsEnd()
-}
 
 async function answerOffer() {
 	if (socket.pc) {
@@ -430,7 +413,7 @@ function videoViewChangeFinal() {
 	document.querySelector(".patientCamera").style.display = "flex";
 
 	document.querySelector(".doctorCamera").style.display = "flex";
-	
+
 	// $('.ConnectCamera').show()
 	$('.unConnectCamera').hide()
 	// icon
@@ -458,7 +441,7 @@ let isMuted = "unMuted"
 function micMuted(params) {
 
 	let muted = document.querySelector(".mutedClass .muted")
-	
+
 	if (isMuted == "unMuted") {
 		localStream.getAudioTracks()[0].enabled = false
 		isMuted = "muted"
@@ -473,7 +456,25 @@ function videoIsEnd() {
 	$('.container-fluid-fix').hide()
 	$('.calling-finished').show()
 }
-function leaveRoom() {
+async function hangup() {
+
+	if (localStream) {
+		localStream.getTracks().forEach(track => {
+			track.stop()
+		})
+		localStream = null
+	}
+
+	if (remoteStream) {
+		remoteStream = null
+	}
+
+	await closePeerConnection()
+	await leaveRoom()
+	showController(false)
+	videoIsEnd()
+}
+async function leaveRoom() {
 	localStream = null
 	remoteStream = null
 	socket.emit("LeaveRoom", myRoomId)
@@ -485,7 +486,7 @@ function leaveRoom() {
 }
 async function switchCamera() {
 	document.querySelector(".switch").classList.toggle("text-info");
-	
+
 	if (videoConfig.facingMode == "user") {
 		capture("environment")
 	} else {
@@ -506,7 +507,7 @@ const capture = async facingMode => {
 		let stream = await navigator.mediaDevices.getUserMedia(options)
 		localStream = stream
 		localVideo.srcObject = localStream
-		
+
 		// replace video track when pc exist
 		if (socket.pc) {
 			let [videoTrack] = stream.getVideoTracks()
