@@ -262,8 +262,10 @@ async function openLocalCamera() {
 	}
 }
 function localVideoViewChange() {
-	$('.patientCamera').show()
-	$('.patientVideo').hide()
+	document.querySelector(".patientCamera").style.display = "flex";
+	document.querySelector(".patientVideo").style.display = "none";
+	// $('.patientCamera').show()
+	// $('.patientVideo').hide()
 }
 // 收到on-webrtc-start後呼叫，對方已建立PeerConnection
 async function createPeerConnection() {
