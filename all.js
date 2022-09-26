@@ -522,3 +522,29 @@ const capture = async facingMode => {
 		return
 	}
 }
+let myDotting=""
+function  dotting(num) {
+	let arr=["..","...","...."]
+	let dot=document.querySelector(".dotting")
+	let doctorVideoDOM=document.querySelector(".doctorVideo")
+	let dd=doctorVideoDOM.getAttribute("style")
+	dot.innerHTML=arr[num]
+	if (num+1<arr.length) {
+		num=num+1
+	}else{
+		num=0
+	}
+	if (dd=="display: none;") {
+		dottingStop()
+		return
+	}else{
+		myDotting=setTimeout(`dotting(${num})`, 1.0*1000)
+	}
+	
+	
+}
+dotting(0)
+
+function dottingStop() {
+    clearTimeout(myDotting);
+}

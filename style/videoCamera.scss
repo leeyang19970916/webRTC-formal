@@ -1,22 +1,10 @@
 body {
-    // height: 100%;
     margin: 0;
-    // For Edge
-    // height: 100%;
-    // // WebKit-based browsers will ignore this
-    // height: -moz-available;
-    // // Mozilla-based browsers will ignore this.
-    // height: -webkit-fill-available;
-    // // For WebKit-based browsers, Edge not support this
-    // height: fill-available;
-    // height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    // height:-webkit-fill-available;
     overflow: hidden;
 }
 
 .container-fluid-fix {
     height: 100vh;
-    /* Use vh as a fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
     margin: 0 auto;
 }
@@ -46,8 +34,6 @@ main {
     height: 50%;
     overflow: hidden;
     width: 100%;
-    // padding: 0 20px;
-
     @media (max-width:450px) {
         flex-direction: column-reverse;
         height: 100%;
@@ -64,24 +50,19 @@ main {
 
     .camera {
         width: 50%;
-        // max-height: 90%;
         height: 100%;
         display: flex;
         justify-content: center;
+        border-radius: 10px;
         @media (min-width: 451px) and (max-width: 1000px) {
             width: 100%;
-            // height: 100%;
+            border-radius:0px;
         }
 
         @media (max-width:450px) {
             width: 100%;
-            // height: 50%;
             max-height: 50%;
-
-            // width: 130%;3
-            // min-height: 10%;
-            // max-height: 50%;
-            // 這邊
+            border-radius:0px;
         }
 
         &.ConnectCamera {
@@ -105,29 +86,20 @@ main {
             }
 
             video {
-                // width: 100%;
-                // min-width:100%;
                 height: 100%;
                 width: 100%;
-
-                // width: 100%;
-                // height: 100%;
-                // min-height: 100%;
                 @media (max-width:450px) {
                     height: 100%;
                     width: auto;
-                    // width: 130%;3
-                    // 這邊
+
                 }
             }
         }
 
         &.unConnectCamera {
-            // height: 90%;
             border: 1px saddlebrown solid;
             margin: 0 10px;
-            border-radius: 10px;
-            // box-sizing: content-box;
+
             &.patientVideo{
                 font-size: 2rem;
                 color: #343a40;
@@ -135,11 +107,8 @@ main {
             @media (min-width: 451px) and (max-width: 1000px) {
                 width: 100%;
                 height: 100%;
-                // margin: 0;
-                border-radius: 0px;
             }
             @media (max-width:450px) {
-                border-radius: 0px;
             }
             .doctorVideoContent {
                 font-size: 2rem;
@@ -150,6 +119,12 @@ main {
                 align-items: center;
                 color: white;
                 width: 100%;
+                // .dotting{
+                //     display: inline-block; min-width: 2px; min-height: 2px;
+                //     box-shadow: 2px 0 currentColor, 6px 0 currentColor, 10px 0 currentColor; /* for IE9+, ..., 3個點 */
+                //     animation: dot 4s infinite step-start both; /* for IE10+, ... */
+                //     *zoom: expression(this.innerHTML = '...'); /*  for IE7. 若無需相容IE7, 此行刪除 */
+                // }
             }
         }
     }
@@ -204,7 +179,6 @@ footer {
         }
 
         span {
-            // margin:  0 50px;
             display: block;
             width: 100px;
             height: auto;
@@ -225,8 +199,6 @@ footer {
                 height: auto;
                 line-height: 70px;
                 font-size: 2rem;
-                // font-size: 28px;
-                // margin:  0 30px;
             }
 
             @media (max-width:450px) {
@@ -234,31 +206,8 @@ footer {
                 height: auto;
                 line-height: 70px;
                 font-size: 2rem;
-                // font-size: 28px;
+
             }
-
-            // &:hover {
-            //     background-color: gray;
-            //     color: white;
-            // }
-
-            // &.hangUpPhone {
-            //     @media (max-width:800px) {
-            //         display: none;
-            //     }
-            // }
-
-            // &.loudSpeakClass {
-            //     &.iconOpen {
-            //         color: #45b6c7;
-
-            //     }
-
-            //     // &:hover {
-            //     //     background-color: whitesmoke;
-            //     //     color: #45b6c7;
-            //     // }
-            // }
         }
     }
 
@@ -268,7 +217,6 @@ footer {
     display: none;
     text-align: center;
     margin: 200px 0;
-    // font-size: xx-large;
     letter-spacing: 1px;
     font-weight: bolder;
 
