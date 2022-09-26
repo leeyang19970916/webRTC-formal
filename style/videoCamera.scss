@@ -34,14 +34,14 @@ main {
     height: 50%;
     overflow: hidden;
     width: 100%;
-    @media (max-width:450px) {
+    @media (max-width:576px) {
         flex-direction: column-reverse;
         height: 100%;
         margin: 0;
         padding: 0px;
     }
 
-    @media (min-width: 451px) and (max-width: 1000px) {
+    @media (min-width: 577px) and (max-width: 1000px) {
         flex-direction: row;
         height: 100%;
         margin: 0;
@@ -54,12 +54,12 @@ main {
         display: flex;
         justify-content: center;
         border-radius: 10px;
-        @media (min-width: 451px) and (max-width: 1000px) {
+        @media (min-width: 577px) and (max-width: 1000px) {
             width: 100%;
             border-radius:0px;
         }
 
-        @media (max-width:450px) {
+        @media (max-width:576px) {
             width: 100%;
             max-height: 50%;
             border-radius:0px;
@@ -72,7 +72,7 @@ main {
             &.patientCamera {
                 margin-right: 10px;
 
-                @media (max-width:450px) {
+                @media (max-width:576px) {
                     margin: 0;
                 }
             }
@@ -80,7 +80,7 @@ main {
             &.doctorCamera {
                 margin-left: 10px;
 
-                @media (max-width:450px) {
+                @media (max-width:576px) {
                     margin: 0;
                 }
             }
@@ -88,7 +88,7 @@ main {
             video {
                 height: 100%;
                 width: 100%;
-                @media (max-width:450px) {
+                @media (max-width:576px) {
                     height: 100%;
                     width: auto;
 
@@ -104,11 +104,11 @@ main {
                 font-size: 2rem;
                 color: #343a40;
             }
-            @media (min-width: 451px) and (max-width: 1000px) {
+            @media (min-width: 577px) and (max-width: 1000px) {
                 width: 100%;
                 height: 100%;
             }
-            @media (max-width:450px) {
+            @media (max-width:576px) {
             }
             .doctorVideoContent {
                 font-size: 2rem;
@@ -119,12 +119,6 @@ main {
                 align-items: center;
                 color: white;
                 width: 100%;
-                // .dotting{
-                //     display: inline-block; min-width: 2px; min-height: 2px;
-                //     box-shadow: 2px 0 currentColor, 6px 0 currentColor, 10px 0 currentColor; /* for IE9+, ..., 3個點 */
-                //     animation: dot 4s infinite step-start both; /* for IE10+, ... */
-                //     *zoom: expression(this.innerHTML = '...'); /*  for IE7. 若無需相容IE7, 此行刪除 */
-                // }
             }
         }
     }
@@ -137,7 +131,7 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    @media (min-width: 451px) and (max-width: 1000px) {
+    @media (min-width: 577px) and (max-width: 1000px) {
         position: absolute;
         bottom: 0%;
         margin-top: 0px;
@@ -147,7 +141,7 @@ footer {
         transform: translate(-50%, 0%);
     }
 
-    @media (max-width:450px) {
+    @media (max-width:576px) {
         position: absolute;
         bottom: 0%;
         left: 50%;
@@ -165,7 +159,7 @@ footer {
         margin: 0 10px;
         align-items: center;
 
-        @media (min-width: 451px) and (max-width: 1000px) {
+        @media (min-width: 577px) and (max-width: 1000px) {
             width: 50%;
             max-width: 100%;
             align-items: flex-end;
@@ -173,7 +167,7 @@ footer {
             padding: 0;
         }
 
-        @media (max-width:450px) {
+        @media (max-width:576px) {
             width: 100%;
             justify-content: space-between;
         }
@@ -194,14 +188,14 @@ footer {
                 background-color: whitesmoke;
             }
 
-            @media (min-width: 451px) and (max-width: 1000px) {
+            @media (min-width: 577px) and (max-width: 1000px) {
                 width: 70px;
                 height: auto;
                 line-height: 70px;
                 font-size: 2rem;
             }
 
-            @media (max-width:450px) {
+            @media (max-width:576px) {
                 width: 70px;
                 height: auto;
                 line-height: 70px;
@@ -220,7 +214,7 @@ footer {
     letter-spacing: 1px;
     font-weight: bolder;
 
-    @media (max-width:450px) {
+    @media (max-width:576px) {
         margin: 50px 0;
         letter-spacing: 0px;
     }

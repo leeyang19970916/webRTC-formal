@@ -472,19 +472,19 @@ async function hangup() {
 	}
 
 	await closePeerConnection()
-	await leaveRoom()
+	// await leaveRoom()
+	socket.emit("LeaveRoom", myRoomId)
 	showController(false)
 	videoIsEnd()
 }
 async function leaveRoom() {
+	localStream.getTracks().forEach(track => {
+		track.stop()
+	})
 	localStream = null
 	remoteStream = null
 	socket.emit("LeaveRoom", myRoomId)
-
-	console.log("已經離開房間")
-
-	$('.container-fluid-fix').hide()
-	$('.calling-finished').show()
+	videoIsEnd()
 }
 async function switchCamera() {
 	document.querySelector(".switch").classList.toggle("text-info");
@@ -522,29 +522,29 @@ const capture = async facingMode => {
 		return
 	}
 }
-let myDotting=""
-function  dotting(num) {
-	let arr=["..","...","...."]
-	let dot=document.querySelector(".dotting")
-	let doctorVideoDOM=document.querySelector(".doctorVideo")
-	let dd=doctorVideoDOM.getAttribute("style")
-	dot.innerHTML=arr[num]
-	if (num+1<arr.length) {
-		num=num+1
-	}else{
-		num=0
+let myDotting = ""
+function dotting(num) {
+	let arr = ["..", "...", "...."]
+	let dot = document.querySelector(".dotting")
+	let doctorVideoDOM = document.querySelector(".doctorVideo")
+	let doctorVideoStyle = doctorVideoDOM.getAttribute("style")
+	dot.innerHTML = arr[num]
+	if (num + 1 < arr.length) {
+		num = num + 1
+	} else {
+		num = 0
 	}
-	if (dd=="display: none;") {
+	if (doctorVideoStyle == "display: none;") {
 		dottingStop()
 		return
-	}else{
-		myDotting=setTimeout(`dotting(${num})`, 1.0*1000)
+	} else {
+		myDotting = setTimeout(`dotting(${num})`, 1.0 * 1000)
 	}
-	
-	
+
+
 }
 dotting(0)
 
 function dottingStop() {
-    clearTimeout(myDotting);
+	clearTimeout(myDotting);
 }

@@ -46,7 +46,7 @@ main {
   overflow: hidden;
   width: 100%;
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   main {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
@@ -57,7 +57,7 @@ main {
     padding: 0px;
   }
 }
-@media (min-width: 451px) and (max-width: 1000px) {
+@media (min-width: 577px) and (max-width: 1000px) {
   main {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -79,13 +79,13 @@ main .camera {
           justify-content: center;
   border-radius: 10px;
 }
-@media (min-width: 451px) and (max-width: 1000px) {
+@media (min-width: 577px) and (max-width: 1000px) {
   main .camera {
     width: 100%;
     border-radius: 0px;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   main .camera {
     width: 100%;
     max-height: 50%;
@@ -100,7 +100,7 @@ main .camera.ConnectCamera {
 main .camera.ConnectCamera.patientCamera {
   margin-right: 10px;
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   main .camera.ConnectCamera.patientCamera {
     margin: 0;
   }
@@ -108,7 +108,7 @@ main .camera.ConnectCamera.patientCamera {
 main .camera.ConnectCamera.doctorCamera {
   margin-left: 10px;
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   main .camera.ConnectCamera.doctorCamera {
     margin: 0;
   }
@@ -117,7 +117,7 @@ main .camera.ConnectCamera video {
   height: 100%;
   width: 100%;
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   main .camera.ConnectCamera video {
     height: 100%;
     width: auto;
@@ -131,7 +131,7 @@ main .camera.unConnectCamera.patientVideo {
   font-size: 2rem;
   color: #343a40;
 }
-@media (min-width: 451px) and (max-width: 1000px) {
+@media (min-width: 577px) and (max-width: 1000px) {
   main .camera.unConnectCamera {
     width: 100%;
     height: 100%;
@@ -168,7 +168,7 @@ footer {
           justify-content: center;
   margin-top: 50px;
 }
-@media (min-width: 451px) and (max-width: 1000px) {
+@media (min-width: 577px) and (max-width: 1000px) {
   footer {
     position: absolute;
     bottom: 0%;
@@ -180,7 +180,7 @@ footer {
             transform: translate(-50%, 0%);
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   footer {
     position: absolute;
     bottom: 0%;
@@ -205,7 +205,7 @@ footer .button {
       -ms-flex-align: center;
           align-items: center;
 }
-@media (min-width: 451px) and (max-width: 1000px) {
+@media (min-width: 577px) and (max-width: 1000px) {
   footer .button {
     width: 50%;
     max-width: 100%;
@@ -218,7 +218,7 @@ footer .button {
     padding: 0;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   footer .button {
     width: 100%;
     -webkit-box-pack: justify;
@@ -242,7 +242,7 @@ footer .button span:hover {
   color: gray;
   background-color: whitesmoke;
 }
-@media (min-width: 451px) and (max-width: 1000px) {
+@media (min-width: 577px) and (max-width: 1000px) {
   footer .button span {
     width: 70px;
     height: auto;
@@ -250,7 +250,7 @@ footer .button span:hover {
     font-size: 2rem;
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   footer .button span {
     width: 70px;
     height: auto;
@@ -266,7 +266,7 @@ footer .button span:hover {
   letter-spacing: 1px;
   font-weight: bolder;
 }
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   .calling-finished {
     margin: 50px 0;
     letter-spacing: 0px;
