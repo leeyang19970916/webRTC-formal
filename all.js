@@ -495,9 +495,12 @@ async function switchCamera() {
 		capture("user")
 	}
 }
-
+var url = location.href;
+console.log(url,"uurrrlll")
 const capture = async facingMode => {
-	console.log(facingMode)
+	console.
+	
+	log(facingMode)
 	videoConfig.facingMode = facingMode
 	const options = {
 		audio: audioConfig,
@@ -509,7 +512,6 @@ const capture = async facingMode => {
 		let stream = await navigator.mediaDevices.getUserMedia(options)
 		localStream = stream
 		localVideo.srcObject = localStream
-
 		// replace video track when pc exist
 		if (socket.pc) {
 			let [videoTrack] = stream.getVideoTracks()
@@ -548,3 +550,4 @@ dotting(0)
 function dottingStop() {
 	clearTimeout(myDotting);
 }
+$('#sampleModal').modal('show')
